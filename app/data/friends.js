@@ -31,4 +31,4 @@ var friendsList = [
         ]
 }];
 
-module.exports = friendsList;
+module.exports = friendsList;    
