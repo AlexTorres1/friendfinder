@@ -191,10 +191,50 @@
     
       </div>
 
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+
+        $("#submit").on("click", function(event) {
+          event.preventDefault();
+          $(".modal").modal();
+        
+          // Make a data object
+          var data = {
+            name: $("#name").val().trim(),
+            photo: $("#photo").val().trim(),
+            questionScores: [
+              $("#q1").val(),
+              $("#q2").val(),
+              $("#q3").val(),
+              $("#q4").val(),
+              $("#q5").val(),
+              $("#q6").val(),
+              $("#q7").val(),
+              $("#q8").val(),
+              $("#q9").val(),
+              $("#q10").val()
+          ]  
+          };
+        
+          console.log(data.questionScores);
+        
+          // Send an AJAX POST-request with jQuery
+          $.post("/api/friends", data)
+            // On success, run the following code
+            .then(function(response) {
+              alert(JSON.stringify(response));
+              // $("#myModalMatch").text(data.questionScores[0]);
+            });
+        
+        });
+        
+              
+              </script>
   </body>
 </html>

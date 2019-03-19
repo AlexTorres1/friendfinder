@@ -1,9 +1,17 @@
 //needs to get the logic to work.
-//need to pull the friends.js to get the json
+
 //need to capture what the user inputs
 //need to be able to compare what the user inputted to the friends.js
 //need to assign who the user is most compatible with
+var newFriends = require("../data/friends");
+module.exports = function(app){
+    app.get("/api/friends", function (req, res){
+        res.json(newFriends);
+    })
 
-app.get("/", function (req, res){
-    res.sendFile(path.join(__dirname, "/../public"))
-})
+    app.post("/api/friends", function(req, res) {
+        res.json(req.body);       
+    
+      });
+}
+
