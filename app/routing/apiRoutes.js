@@ -10,8 +10,9 @@ module.exports = function(app){
     })
 
     app.post("/api/friends", function(req, res) {
-        res.json(req.body);       
-    
+        res.json(newFriends[0]);       
+        newFriends.push(req.body);
+        
       });
 }
 
